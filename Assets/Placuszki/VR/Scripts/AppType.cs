@@ -6,6 +6,7 @@ namespace Placuszki.VR
     {
         public static AppType Instance;
         public static bool IsVr => Application.platform == RuntimePlatform.Android;
+        public static bool IsPC => !IsVr;
         
         void Start()
         {
