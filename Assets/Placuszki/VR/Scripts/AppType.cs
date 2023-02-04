@@ -5,8 +5,8 @@ namespace Placuszki.VR
     public class AppType : MonoBehaviour
     {
         public static AppType Instance;
-        public static bool VR => Application.platform == RuntimePlatform.Android;
-        public static bool PC => !VR;
+        public bool VR => Application.platform == RuntimePlatform.Android;
+        public bool PC => !VR;
         
         void Start()
         {
