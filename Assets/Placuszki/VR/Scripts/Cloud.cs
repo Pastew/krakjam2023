@@ -15,12 +15,12 @@ namespace Placuszki.VR
 
 #if UNITY_EDITOR
             if (Input.GetKey(KeyCode.A))
-                dir = 1;
-            else if (Input.GetKey(KeyCode.D))
                 dir = -1;
+            else if (Input.GetKey(KeyCode.D))
+                dir = 1;
 #endif
 
-            Vector3 translateVector = new Vector3(baseSpeed * dir * Time.deltaTime, 0, 0);
+            Vector3 translateVector = new Vector3(-1 * baseSpeed * dir * Time.deltaTime, 0, 0);
 
             float pos = transform.position.x;
             bool shouldMove = dir > 0 && pos <= maxPos

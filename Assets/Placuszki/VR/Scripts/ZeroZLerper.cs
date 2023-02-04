@@ -4,8 +4,8 @@ namespace Placuszki.VR.Scripts
 {
     public class ZeroZLerper : MonoBehaviour
     {
-        [SerializeField] private AnimationCurve animationCurve;
-
+        [SerializeField] float power = 0.8f;
+        
         private bool _isEnabled = false;
         private float _timeSinceEnabled;
         private float _zWhenEnabled;
@@ -29,8 +29,7 @@ namespace Placuszki.VR.Scripts
             _timeSinceEnabled += Time.deltaTime;
 
             float targetZ = 0;
-            float animCurveValue = animationCurve.Evaluate(_timeSinceEnabled);
-            float newZ = Mathf.Lerp(_zWhenEnabled, targetZ, _timeSinceEnabled);
+            float newZ = Mathf.Lerp(_zWhenEnabled, targetZ, _timeSinceEnabled * power);
             
             Vector3 newPos = transform.position;
             newPos.z = newZ;
