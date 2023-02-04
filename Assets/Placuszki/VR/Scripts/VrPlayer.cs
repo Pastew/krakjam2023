@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Placuszki.VR;
 using UnityEngine;
 
 public class VrPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (AppType.Instance.VR)
+            gameObject.SetActive(true);
     }
 }
