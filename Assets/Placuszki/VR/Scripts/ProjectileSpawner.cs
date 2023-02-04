@@ -9,7 +9,7 @@ namespace Placuszki.VR
 
         public Projectile SpawnNewProjectile()
         {
-            GameObject newProjectile = Instantiate(projectilePrefab, spawnPoint.transform);
+            GameObject newProjectile = Instantiate(projectilePrefab, spawnPoint.transform);//TODO: Szymon
             newProjectile.transform.localPosition = Vector3.zero;
             newProjectile.transform.localRotation = Quaternion.identity;
 
