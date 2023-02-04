@@ -30,8 +30,14 @@ namespace Placuszki.VR
         private void ProjectileReleased()
         {
             grabbable.enabled = false;
-            _rigidbody.useGravity = true;
             zeroZLerper.SetIsEnabled(true);
+            _rigidbody.useGravity = true;
+            // _rigidbody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+            
+            // var rot = transform.rotation;
+            // rot.z = 0;
+            // rot.y = 0;
+            // transform.rotation = rot;
         }
     }
 }
