@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
@@ -12,6 +13,9 @@ using Placuszki.VR;
 public struct CreatePCPlayer : NetworkMessage
 {
     public Color color;
+}
+public struct CreateVRPlayer : NetworkMessage
+{
 }
 
 public class PlacuszkiNetworkManager : NetworkManager
@@ -199,13 +203,24 @@ public class PlacuszkiNetworkManager : NetworkManager
             NetworkClient.Send(playerMessage);
         } else {
             // create 
+            CreateVRPlayer playerMessage = new CreateVRPlayer
+            {
+            };
+            NetworkClient.Send(playerMessage);
         }
-
     }
 
     void OnCreatePCPlayer(NetworkConnectionToClient conn, CreatePCPlayer message)
     {
         GameObject gameobject = Instantiate(playerPrefab); // capsule in our case
+
+        // call this to use this gameobject as the primary controller
+        NetworkServer.AddPlayerForConnection(conn, gameobject);
+    } 
+    
+    void OnCreateVRPlayer(NetworkConnectionToClient conn, CreateVRPlayer message)
+    {
+        GameObject gameobject = Instantiate(spawnPrefabs.FirstOrDefault(go => go.GetComponent<VrPlayer>())); // capsule in our case
 
         // call this to use this gameobject as the primary controller
         NetworkServer.AddPlayerForConnection(conn, gameobject);
@@ -252,6 +267,7 @@ public class PlacuszkiNetworkManager : NetworkManager
         base.OnStartServer();
 
         NetworkServer.RegisterHandler<CreatePCPlayer>(OnCreatePCPlayer);
+        NetworkServer.RegisterHandler<CreateVRPlayer>(OnCreateVRPlayer);
     }
 
     /// <summary>

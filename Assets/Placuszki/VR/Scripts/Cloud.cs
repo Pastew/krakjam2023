@@ -6,7 +6,7 @@ namespace Placuszki.VR
     public class Cloud : MonoBehaviour
     {
         [SerializeField] private float baseSpeed = 3;
-        [SerializeField] private float maxPos = 3.5f;
+        [SerializeField] private float maxPos = 2.5f;
 
         void Update()
         {
