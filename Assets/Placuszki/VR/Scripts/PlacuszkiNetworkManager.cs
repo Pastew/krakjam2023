@@ -1,12 +1,22 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
+using Placuszki.VR;
 
 /*
 	Documentation: https://mirror-networking.gitbook.io/docs/components/network-manager
 	API Reference: https://mirror-networking.com/docs/api/Mirror.NetworkManager.html
 */
+
+public struct CreatePCPlayer : NetworkMessage
+{
+    public Color color;
+}
+public struct CreateVRPlayer : NetworkMessage
+{
+}
 
 public class PlacuszkiNetworkManager : NetworkManager
 {
@@ -182,6 +192,38 @@ public class PlacuszkiNetworkManager : NetworkManager
     public override void OnClientConnect()
     {
         base.OnClientConnect();
+
+        if (AppType.Instance.PC) {
+            // spawn capsule
+            CreatePCPlayer playerMessage = new CreatePCPlayer
+            {
+                color = Color.green
+            };
+
+            NetworkClient.Send(playerMessage);
+        } else {
+            // create 
+            CreateVRPlayer playerMessage = new CreateVRPlayer
+            {
+            };
+            NetworkClient.Send(playerMessage);
+        }
+    }
+
+    void OnCreatePCPlayer(NetworkConnectionToClient conn, CreatePCPlayer message)
+    {
+        GameObject gameobject = Instantiate(playerPrefab); // capsule in our case
+
+        // call this to use this gameobject as the primary controller
+        NetworkServer.AddPlayerForConnection(conn, gameobject);
+    } 
+    
+    void OnCreateVRPlayer(NetworkConnectionToClient conn, CreateVRPlayer message)
+    {
+        GameObject gameobject = Instantiate(spawnPrefabs.FirstOrDefault(go => go.GetComponent<VrPlayer>())); // capsule in our case
+
+        // call this to use this gameobject as the primary controller
+        NetworkServer.AddPlayerForConnection(conn, gameobject);
     }
 
     /// <summary>
@@ -220,7 +262,13 @@ public class PlacuszkiNetworkManager : NetworkManager
     /// This is invoked when a server is started - including when a host is started.
     /// <para>StartServer has multiple signatures, but they all cause this hook to be called.</para>
     /// </summary>
-    public override void OnStartServer() { }
+    public override void OnStartServer() {
+    
+        base.OnStartServer();
+
+        NetworkServer.RegisterHandler<CreatePCPlayer>(OnCreatePCPlayer);
+        NetworkServer.RegisterHandler<CreateVRPlayer>(OnCreateVRPlayer);
+    }
 
     /// <summary>
     /// This is invoked when the client is started.

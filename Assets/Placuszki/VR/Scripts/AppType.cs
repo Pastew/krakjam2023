@@ -8,7 +8,7 @@ namespace Placuszki.VR
         public bool VR => Application.platform == RuntimePlatform.Android;
         public bool PC => !VR;
         
-        void Start()
+        void Awake()
         {
             if (Instance != null)
             {
