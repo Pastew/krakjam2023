@@ -5,7 +5,7 @@ namespace Placuszki.VR
 {
     public class Cloud : MonoBehaviour
     {
-        [SerializeField] private float baseSpeed = 5;
+        [SerializeField] private float baseSpeed = 3;
         [SerializeField] private float maxPos = 3.5f;
 
         void Update()
@@ -20,15 +20,15 @@ namespace Placuszki.VR
                 dir = 1;
 #endif
 
-            Vector3 translateVector = new Vector3(-1 * baseSpeed * dir * Time.deltaTime, 0, 0);
+            Vector3 translateVector = new Vector3(baseSpeed * dir * Time.deltaTime, 0, 0);
 
-            float pos = transform.position.x;
+            float pos = transform.localPosition.x;
             bool shouldMove = dir > 0 && pos <= maxPos
                               || dir < 0 && pos >= -maxPos;
                               
             if (shouldMove)
             {
-                transform.Translate(translateVector);
+                transform.Translate(translateVector, Space.Self);
             }
         }
     }
