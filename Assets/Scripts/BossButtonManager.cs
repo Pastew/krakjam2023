@@ -6,7 +6,7 @@ public class BossButtonManager : MonoBehaviour
 {
     public static BossButtonManager Instance { get; private set; }
 
-    private List<Tile> tiles;
+    private List<Tile> tiles = new List<Tile>();
 
     private void Awake()
     {
