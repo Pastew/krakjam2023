@@ -30,7 +30,7 @@ public class Player2DController : MonoBehaviour
     {
         MovePlayer();
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump" + PlayerID) && IsGrounded())
         {
             Jump();
 
@@ -49,7 +49,7 @@ public class Player2DController : MonoBehaviour
             horizontalInput = -sideForce;
 
         if(!LeftRay() && !RightRay())
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal"+ PlayerID);
 
         playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
     }
