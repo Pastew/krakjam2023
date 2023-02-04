@@ -431,6 +431,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844752976}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &931717875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 931717876}
+  m_Layer: 0
+  m_Name: VrPlayerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &931717876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931717875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2683195715663574204}
+  m_Father: {fileID: 1057353934}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1030627192
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +550,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1144718567}
-  - {fileID: 2683195715663574204}
+  - {fileID: 931717876}
   - {fileID: 1157436209}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -595,7 +626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157436209}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: ProjectileSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,17 +1116,17 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1057353934}
+    m_TransformParent: {fileID: 931717876}
     m_Modifications:
     - target: {fileID: 9214628024442998853, guid: fbbd2543e3f33fe469e9341f04b176ed,
         type: 3}
       propertyPath: m_Name
-      value: XR Rig
+      value: VrPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 9214628024442998855, guid: fbbd2543e3f33fe469e9341f04b176ed,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9214628024442998855, guid: fbbd2543e3f33fe469e9341f04b176ed,
         type: 3}
@@ -1110,7 +1141,7 @@ PrefabInstance:
     - target: {fileID: 9214628024442998855, guid: fbbd2543e3f33fe469e9341f04b176ed,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.187
+      value: -0.18700004
       objectReference: {fileID: 0}
     - target: {fileID: 9214628024442998855, guid: fbbd2543e3f33fe469e9341f04b176ed,
         type: 3}
