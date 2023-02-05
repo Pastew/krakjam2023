@@ -9,7 +9,7 @@ public class MonkeTrigger : MonoBehaviour
 
     private void OnEnable()
     {
-        tweener = transform.DOScale(0.2f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        tweener = transform.DOScale(0.02f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
     private void OnTriggerEnter(Collider collision)
