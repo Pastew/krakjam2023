@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c1cb1b2b54ca204c99b821f631faae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
   PlayerID: 0
   _animator: {fileID: 2228728252699394082}
   raycastDistance: 0.1
@@ -79,7 +82,7 @@ MonoBehaviour:
   sideTransform_2: {fileID: 6116991546778672056}
   sideForce: 0.3
   playerSpeed: 2
-  jumpPower: 3.8
+  jumpPower: 4
   playerRigidbody: {fileID: 5601196876672644651}
   _mask:
     serializedVersion: 2
