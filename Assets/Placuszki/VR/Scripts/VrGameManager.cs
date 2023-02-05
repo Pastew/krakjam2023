@@ -11,22 +11,26 @@ namespace Placuszki.VR.Scripts
 
         private void Start()
         {
-            SpawnNewProjectile();
+            //SpawnNewProjectile();
         }
 
         private void SpawnNewProjectile()
         {
-            _currentSpawnedProjectile = projectileSpawner.SpawnNewProjectile();
-            _currentSpawnedProjectile.OnProjectileGrabbed.AddListener(ProjectileGrabbed);
+            projectileSpawner.SpawnNewProjectile();
         }
 
-        private void ProjectileGrabbed()
+        public void OnProjectileGrabbed(Projectile projectile)
         {
             if (_currentSpawnedProjectile != null)
             {
                 _currentSpawnedProjectile = null;
                 Invoke(nameof(SpawnNewProjectile), delayBeforeSpawningNextProjectile);
             }
+        }
+
+        public void OnProjectileSpawned(Projectile projectile)
+        {
+            _currentSpawnedProjectile = projectile;
         }
     }
 }

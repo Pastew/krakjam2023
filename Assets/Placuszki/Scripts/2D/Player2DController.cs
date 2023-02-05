@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using Mirror;
 
-public class Player2DController : MonoBehaviour
+public class Player2DController : NetworkBehaviour
 {
     public int PlayerID;
 
