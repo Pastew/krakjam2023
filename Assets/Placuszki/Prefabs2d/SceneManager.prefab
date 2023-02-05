@@ -159,7 +159,7 @@ MonoBehaviour:
   _UI: {fileID: 0}
   _endUI: {fileID: 0}
   Label: {fileID: 0}
-  buttonCount: 5
+  buttonCount: 3
   buttonTimeRandomizer: {x: 5, y: 10, z: 0}
 --- !u!1 &6427088762480288144
 GameObject:

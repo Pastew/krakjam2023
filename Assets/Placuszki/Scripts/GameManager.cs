@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
-        _UI.gameObject.SetActive(true);
+        _endUI.gameObject.SetActive(true);
     }
 
     private void Update()
