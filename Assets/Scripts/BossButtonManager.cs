@@ -25,6 +25,7 @@ public class BossButtonManager : MonoBehaviour
 
     public void SpawnButton()
     {
-
+        int rdnm = Random.Range(0, tiles.Count);
+        tiles[rdnm].CreateButton();
     }
 }
