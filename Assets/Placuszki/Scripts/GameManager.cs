@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     private int monkeCounter = 0;
 
+    private float _timeSinceEndGame;
 
     public Vector3 buttonTimeRandomizer = new Vector2(4, 10);
 
@@ -71,13 +72,18 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         _endUI.gameObject.SetActive(true);
+        _timeSinceEndGame = 0;
     }
 
     private void Update()
     {
-        if (Input.anyKey && _gamestate == GameState.End)
+        if (Input.anyKey && _gamestate == GameState.End && _timeSinceEndGame > 5)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else if(_gamestate == GameState.End)
+        {
+            _timeSinceEndGame += Time.deltaTime;
         }
 
         if (Input.anyKey && _gamestate == GameState.ReadyToPlay)

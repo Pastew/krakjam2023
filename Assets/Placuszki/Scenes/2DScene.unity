@@ -6299,10 +6299,6 @@ PrefabInstance:
       propertyPath: _endUI
       value: 
       objectReference: {fileID: 1456054546}
-    - target: {fileID: 543060441, guid: d52fd1ef895ac0941af995dc5503f15f, type: 3}
-      propertyPath: buttonCount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2862615827975783729, guid: d52fd1ef895ac0941af995dc5503f15f,
         type: 3}
       propertyPath: m_Name
