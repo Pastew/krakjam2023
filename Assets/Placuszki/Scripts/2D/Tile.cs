@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public GameObject _button;
-    public Transform _spawn;
 
     void Start()
     {
@@ -14,8 +13,7 @@ public class Tile : MonoBehaviour
 
     public void CreateButton()
     {
-        if (_button != null)
-            Instantiate(_button, _spawn.position, Quaternion.identity);
+        _button.SetActive(true);
     }
     
 }

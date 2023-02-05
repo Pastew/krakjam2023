@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject _StartUI;
 
+    public int buttonCount = 5;
+
+    public  Vector3 buttonTimeRandomizer;
+
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -31,5 +35,27 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _gamestate = GameState.ReadyToPlay;
+    }
+
+    public void MonkeButton()
+    {
+
+    }
+
+    void StartGame()
+    {
+
+    }
+
+    private void SpawnNextButton()
+    {
+
+    }
+
+    IEnumerator ButtonRoutine(float randomtime)
+    {
+        yield return new WaitForSeconds(randomtime);
+
+
     }
 }
