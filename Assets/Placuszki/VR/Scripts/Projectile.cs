@@ -31,8 +31,12 @@ namespace Placuszki.VR
         private void ProjectileReleased()
         {
             grabbable.enabled = false;
-            zeroZLerper.SetIsEnabled(true);
+            
+            if(zeroZLerper != null)
+                zeroZLerper.SetIsEnabled(true);
+            
             _rigidbody.useGravity = true;
+            Destroy(gameObject, 10);
             // _rigidbody.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             
             // var rot = transform.rotation;

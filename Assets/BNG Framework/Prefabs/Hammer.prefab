@@ -183,8 +183,8 @@ GameObject:
   - component: {fileID: 7550725800188697960}
   - component: {fileID: 7550725800188697961}
   - component: {fileID: 7550725800188697959}
-  - component: {fileID: 7221646070715991087}
   - component: {fileID: 7550725800188697967}
+  - component: {fileID: 2557782069383344760}
   m_Layer: 10
   m_Name: Hammer
   m_TagString: Untagged
@@ -458,19 +458,6 @@ MonoBehaviour:
   MaximumVolume: 1
   RecentlyPlayedSound: 0
   LastRelativeVelocity: 0
---- !u!65 &7221646070715991087
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7550725800188698000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.09061694, y: 0.08940944, z: 0.2}
-  m_Center: {x: -0.00041878223, y: 0.1452129, z: 0}
 --- !u!114 &7550725800188697967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +477,20 @@ MonoBehaviour:
   LastDamageForce: 0
   TakeCollisionDamage: 0
   CollisionDamage: 5
+--- !u!136 &2557782069383344760
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7550725800188698000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.09
+  m_Height: 0.45
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7550725800682412427
 GameObject:
   m_ObjectHideFlags: 0
