@@ -20,6 +20,7 @@ namespace Placuszki.VR
         private void ReceiveDamage()
         {
             gameObject.transform.parent.gameObject.SetActive(false);
+            GameManager.Instance.MonkeHIT();
             var particle = Instantiate(deadParticlePrefab, transform.position, Quaternion.identity);
             particle.transform.parent = null;
             Destroy(particle, 5);

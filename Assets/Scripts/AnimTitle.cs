@@ -7,9 +7,9 @@ public class AnimTitle : MonoBehaviour
 {
     Tweener tweener;
 
-    void Start()
+    void OnEnable()
     {
-        tweener = transform.DOScale(1.1f, 1f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        tweener = transform.DOScale(1.1f, 0.7f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
 }
