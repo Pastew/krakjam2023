@@ -92,8 +92,9 @@ public class Player2DController : MonoBehaviour
                 stopped = true;
             }
 
-            playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
         }
+
+        playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
     }
 
     private void Jump() => playerRigidbody.velocity = new Vector2(0, jumpPower);

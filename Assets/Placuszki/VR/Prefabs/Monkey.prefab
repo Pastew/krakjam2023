@@ -67,8 +67,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerID: 0
   _animator: {fileID: 2228728252699394082}
-  raycastDistance: 3
-  raycastDistanceSide: 0.3
+  raycastDistance: 0.3
+  raycastDistanceSide: 0.2
   monkeyModelRotationSpeed: 0.1
   _monkeObject: {fileID: 5192127402766735960}
   DownRaycast_1: {fileID: 3115252411273999896}
