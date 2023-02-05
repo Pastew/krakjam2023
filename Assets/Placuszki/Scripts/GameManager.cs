@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public enum GameState
     {
         ReadyToPlay,
+        playing,
         End
     }
 
@@ -44,11 +45,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _gamestate = GameState.ReadyToPlay;
+        _UI.SetActive(true);
     }
 
     public void MonkeButton()
     {
         pressedButtonCounter++;
+        SpawnNextButton();
         audio.Play();
     }
 
@@ -79,7 +82,9 @@ public class GameManager : MonoBehaviour
 
         if (Input.anyKey && _gamestate == GameState.ReadyToPlay)
         {
+            _gamestate = GameState.playing;
             _UI.gameObject.SetActive(false);
+            SpawnNextButton();
         }
     }
 
@@ -103,5 +108,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(randomtime);
 
         BossButtonManager.Instance.SpawnButton();
+       
     }
 }
