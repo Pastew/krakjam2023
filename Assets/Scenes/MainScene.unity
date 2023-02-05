@@ -6480,6 +6480,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 949587391567248121, guid: 442fea1b357358d4993c2062af7dadea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a587822d3dd88e14ba83c4beadb896d6, type: 2}
     - target: {fileID: 949587392303344453, guid: 442fea1b357358d4993c2062af7dadea,
         type: 3}
       propertyPath: m_RootOrder
@@ -6540,6 +6545,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud
       objectReference: {fileID: 0}
+    - target: {fileID: 949587392483963865, guid: 442fea1b357358d4993c2062af7dadea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a587822d3dd88e14ba83c4beadb896d6, type: 2}
     - target: {fileID: 7048998380228974566, guid: 442fea1b357358d4993c2062af7dadea,
         type: 3}
       propertyPath: sceneId
