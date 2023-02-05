@@ -12,13 +12,14 @@ namespace Placuszki.VR
             SpawnNewProjectile();
         }
 
-        public void SpawnNewProjectile()
+        public Projectile SpawnNewProjectile()
         {
-            GameObject newProjectile = Instantiate(projectilePrefab);//TODO: Szymon
-            newProjectile.transform.position = spawnPoint.transform.position;
-            newProjectile.transform.rotation = spawnPoint.transform.rotation;
+            GameObject newProjectile = Instantiate(projectilePrefab, spawnPoint.transform);//TODO: Szymon
+            newProjectile.transform.localPosition = Vector3.zero;
+            newProjectile.transform.localRotation = Quaternion.identity;
 
             Projectile projectile = newProjectile.GetComponent<Projectile>();
+            return projectile;
         }
     }
 }

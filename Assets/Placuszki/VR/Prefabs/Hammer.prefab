@@ -153,7 +153,6 @@ GameObject:
   - component: {fileID: 4262087621039413833}
   - component: {fileID: 4738835621759163436}
   - component: {fileID: 4169099576934238106}
-  - component: {fileID: 2807481684540911229}
   m_Layer: 10
   m_Name: Hammer
   m_TagString: Untagged
@@ -408,7 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabbableUnityEvents: {fileID: 4169099576934238106}
   grabbable: {fileID: 4262087621039413836}
-  zeroZLerper: {fileID: 2807481684540911229}
+  zeroZLerper: {fileID: 0}
 --- !u!114 &4169099576934238106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,19 +474,6 @@ MonoBehaviour:
   onSnapZoneExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2807481684540911229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4262087621039413937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee3f9a88b05adc4cba584872fa8b8d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: 0.8
 --- !u!1 &4262087621535489706
 GameObject:
   m_ObjectHideFlags: 0
