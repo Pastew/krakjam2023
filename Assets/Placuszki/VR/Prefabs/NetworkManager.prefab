@@ -50,8 +50,8 @@ MonoBehaviour:
   autoStartServerBuild: 1
   autoConnectClientBuild: 0
   sendRate: 30
-  offlineScene: Assets/Scenes/VRScene.unity
-  onlineScene: Assets/Scenes/VRScene.unity
+  offlineScene: 
+  onlineScene: 
   transport: {fileID: 439915772898687817}
   networkAddress: localhost
   maxConnections: 100

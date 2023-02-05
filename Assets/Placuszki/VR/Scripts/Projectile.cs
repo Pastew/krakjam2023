@@ -7,8 +7,6 @@ namespace Placuszki.VR
 {
     public class Projectile : MonoBehaviour
     {
-        public UnityEvent OnProjectileGrabbed;
-        
         [SerializeField] private GrabbableUnityEvents grabbableUnityEvents;
         [SerializeField] private Grabbable grabbable;
         [SerializeField] private ZeroZLerper zeroZLerper;
@@ -20,11 +18,14 @@ namespace Placuszki.VR
             grabbableUnityEvents.onGrab.AddListener(ProjectileGrabbed);
             grabbableUnityEvents.onRelease.AddListener(ProjectileReleased);
             _rigidbody = GetComponent<Rigidbody>();
+            
+            FindObjectOfType<VrGameManager>().OnProjectileSpawned(this);
+
         }
 
         private void ProjectileGrabbed(Grabber grabber)
         {
-            OnProjectileGrabbed.Invoke();
+            FindObjectOfType<VrGameManager>().OnProjectileGrabbed(this);
         }
         
         private void ProjectileReleased()
