@@ -6,6 +6,8 @@ public class Player2DController : MonoBehaviour
 {
     public int PlayerID;
 
+    [SerializeField] private Animator _animator;
+
     [SerializeField] private float raycastDistance = .1f;
     [SerializeField] private float raycastDistanceSide = .1f;
     [SerializeField] private Transform sideTransform_1;
@@ -34,7 +36,9 @@ public class Player2DController : MonoBehaviour
         {
             Jump();
 
-            if(!_jumpSFX.isPlaying)
+            _animator.SetTrigger("j");
+
+            if (!_jumpSFX.isPlaying)
             _jumpSFX.Play();
         }       
     }
@@ -49,7 +53,10 @@ public class Player2DController : MonoBehaviour
             horizontalInput = -sideForce;
 
         if(!LeftRay() && !RightRay())
+        {
         horizontalInput = Input.GetAxisRaw("Horizontal"+ PlayerID);
+            _animator.SetTrigger("r");
+        }
 
         playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
     }

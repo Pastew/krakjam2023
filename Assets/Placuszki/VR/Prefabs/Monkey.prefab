@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2760746292044141629}
   - component: {fileID: 3654952780801191121}
   - component: {fileID: 5601196876672644651}
+  - component: {fileID: 7979678999439492815}
   m_Layer: 0
   m_Name: Monkey
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: a9a985198f2d65d46ac0c25fa9081bc5, type: 3}
+  - {fileID: 2100000, guid: cb389c808753b734e9f04f52e29549e5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 0
+  _animator: {fileID: 7979678999439492815}
   raycastDistance: 0.3
   raycastDistanceSide: 0.3
   sideTransform_1: {fileID: 6116991547833372251}
@@ -240,6 +242,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!95 &7979678999439492815
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340678856209822217}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0d51b5830772044b9260da1bf6dd67e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6116991546778672057
 GameObject:
   m_ObjectHideFlags: 0
