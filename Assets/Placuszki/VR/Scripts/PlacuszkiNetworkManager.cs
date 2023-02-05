@@ -192,38 +192,24 @@ public class PlacuszkiNetworkManager : NetworkManager
     public override void OnClientConnect()
     {
         base.OnClientConnect();
-
-        if (AppType.Instance.PC) {
-            // spawn capsule
-            CreatePCPlayer playerMessage = new CreatePCPlayer
-            {
-                color = Color.green
-            };
-
-            NetworkClient.Send(playerMessage);
-        } else {
-            // create 
-            CreateVRPlayer playerMessage = new CreateVRPlayer
-            {
-            };
-            NetworkClient.Send(playerMessage);
-        }
+        Console.WriteLine("CLIENT CONNECT");
+        Debug.LogWarning("some problem");
     }
 
     void OnCreatePCPlayer(NetworkConnectionToClient conn, CreatePCPlayer message)
     {
-        GameObject gameobject = Instantiate(playerPrefab); // capsule in our case
+        // GameObject gameobject = Instantiate(playerPrefab); // capsule in our case
 
         // call this to use this gameobject as the primary controller
-        NetworkServer.AddPlayerForConnection(conn, gameobject);
+        // NetworkServer.AddPlayerForConnection(conn, gameobject);
     } 
     
     void OnCreateVRPlayer(NetworkConnectionToClient conn, CreateVRPlayer message)
     {
-        GameObject gameobject = Instantiate(spawnPrefabs.FirstOrDefault(go => go.GetComponent<VrPlayer>())); // capsule in our case
+        // GameObject gameobject = Instantiate(spawnPrefabs.FirstOrDefault(go => go.GetComponent<VrPlayer>())); // capsule in our case
 
         // call this to use this gameobject as the primary controller
-        NetworkServer.AddPlayerForConnection(conn, gameobject);
+        // NetworkServer.AddPlayerForConnection(conn, gameobject);
     }
 
     /// <summary>
@@ -266,8 +252,8 @@ public class PlacuszkiNetworkManager : NetworkManager
     
         base.OnStartServer();
 
-        NetworkServer.RegisterHandler<CreatePCPlayer>(OnCreatePCPlayer);
-        NetworkServer.RegisterHandler<CreateVRPlayer>(OnCreateVRPlayer);
+        // NetworkServer.RegisterHandler<CreatePCPlayer>(OnCreatePCPlayer);
+        // NetworkServer.RegisterHandler<CreateVRPlayer>(OnCreateVRPlayer);
     }
 
     /// <summary>

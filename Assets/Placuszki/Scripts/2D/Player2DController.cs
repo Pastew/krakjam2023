@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using Mirror;
 
-public class Player2DController : MonoBehaviour
+public class Player2DController : NetworkBehaviour
 {
     public int PlayerID;
 
@@ -59,10 +60,10 @@ public class Player2DController : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (LeftRay())
-            horizontalInput = sideForce;
-        else if (RightRay())
-            horizontalInput = -sideForce;
+        // if (LeftRay())
+        //     horizontalInput = sideForce;
+        // else if (RightRay())
+        //     horizontalInput = -sideForce;
 
         if (!LeftRay() && !RightRay())
         {
@@ -92,8 +93,12 @@ public class Player2DController : MonoBehaviour
                 stopped = true;
             }
 
-            playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
+            //playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
+            
         }
+        float moveX = horizontalInput * Time.deltaTime * playerSpeed;
+
+        transform.Translate(moveX, 0, 0);
     }
 
     private void Jump() => playerRigidbody.velocity = new Vector2(0, jumpPower);
