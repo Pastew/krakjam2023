@@ -14,7 +14,7 @@ public class MonkeTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             GameManager.Instance.MonkeButton();
             gameObject.SetActive(false);
