@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player2DController : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class Player2DController : MonoBehaviour
 
     [SerializeField] private float raycastDistance = .1f;
     [SerializeField] private float raycastDistanceSide = .1f;
+    [SerializeField] private float monkeyModelRotationSpeed = 6f;
+
+    [SerializeField] private Transform _monkeObject;
+
+    [SerializeField] private Transform DownRaycast_1;
+    [SerializeField] private Transform DownRaycast_2;
+
     [SerializeField] private Transform sideTransform_1;
     [SerializeField] private Transform sideTransform_2;
     [SerializeField] private float sideForce = .2f;
@@ -22,6 +30,10 @@ public class Player2DController : MonoBehaviour
     [Space]
     [SerializeField] private AudioSource _jumpSFX;
     [SerializeField] private Vector2 _randomPitch = new Vector2(.6f, 1f);
+
+    bool leftTurn = true;
+    bool stopped = true;
+
 
     private void Start()
     {
@@ -39,8 +51,8 @@ public class Player2DController : MonoBehaviour
             _animator.SetTrigger("j");
 
             if (!_jumpSFX.isPlaying)
-            _jumpSFX.Play();
-        }       
+                _jumpSFX.Play();
+        }
     }
 
     float horizontalInput;
@@ -52,13 +64,36 @@ public class Player2DController : MonoBehaviour
         else if (RightRay())
             horizontalInput = -sideForce;
 
-        if(!LeftRay() && !RightRay())
+        if (!LeftRay() && !RightRay())
         {
-        horizontalInput = Input.GetAxisRaw("Horizontal"+ PlayerID);
-            _animator.SetTrigger("r");
-        }
+            horizontalInput = Input.GetAxisRaw("Horizontal" + PlayerID);
 
-        playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
+            if (horizontalInput > 0 && leftTurn)
+            {
+                leftTurn = false;
+                _monkeObject.DORotate(new Vector3(0, -45, 0), monkeyModelRotationSpeed);
+            }
+
+            if (horizontalInput < 0 && !leftTurn)
+            {
+                leftTurn = true;
+                _monkeObject.DORotate(new Vector3(0, 45, 0), monkeyModelRotationSpeed);
+            }
+
+            if (Mathf.Abs(horizontalInput) > 0 && stopped)
+            {
+                stopped = false;
+                _animator.SetTrigger("r");
+            }
+
+            if (Mathf.Abs(horizontalInput) == 0 && !stopped)
+            {
+                _animator.SetTrigger("rr");
+                stopped = true;
+            }
+
+            playerRigidbody.velocity = new Vector2(horizontalInput * playerSpeed, playerRigidbody.velocity.y);
+        }
     }
 
     private void Jump() => playerRigidbody.velocity = new Vector2(0, jumpPower);
@@ -67,12 +102,13 @@ public class Player2DController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, raycastDistance);
+        return (Physics.Raycast(DownRaycast_1.position, Vector3.down, raycastDistance)
+            || (Physics.Raycast(DownRaycast_2.position, Vector3.down, raycastDistance)));
     }
 
     private bool LeftRay()
     {
-        return (Physics.Raycast(sideTransform_1.position, Vector3.left, raycastDistanceSide) 
+        return (Physics.Raycast(sideTransform_1.position, Vector3.left, raycastDistanceSide)
             || (Physics.Raycast(sideTransform_2.position, Vector3.left, raycastDistanceSide)));
     }
 
