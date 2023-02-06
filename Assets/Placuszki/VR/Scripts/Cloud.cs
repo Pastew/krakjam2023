@@ -13,12 +13,10 @@ namespace Placuszki.VR
             float dir = -InputBridge.Instance.LeftThumbstickAxis.x;
             // float dir = InputBridge.Instance.LeftThumbstickAxis.y;
 
-#if UNITY_EDITOR
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.Alpha1))
                 dir = 1;
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.Alpha2))
                 dir = -1;
-#endif
 
             Vector3 translateVector = new Vector3(baseSpeed * dir * Time.deltaTime, 0, 0);
 
