@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,8 +16,8 @@ public class GameManager : MonoBehaviour
 
     public AudioSource audio;
 
-    public GameObject _UI;
-    public GameObject _endUI;
+    public GameObject canvasStart;
+    public GameObject canvasEnd;
     public Text Label;
 
     public int buttonCount = 5;
@@ -46,12 +45,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _gamestate = GameState.ReadyToPlay;
-        _UI.SetActive(true);
+        canvasStart.SetActive(true);
+        canvasEnd.SetActive(false);
     }
 
     public void MonkeButton()
     {
         pressedButtonCounter++;
+        Debug.Log($"Monke button pressed, counter = {pressedButtonCounter}");
         SpawnNextButton();
         audio.Play();
     }
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
-        _endUI.gameObject.SetActive(true);
+        canvasEnd.gameObject.SetActive(true);
         _timeSinceEndGame = 0;
     }
 
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour
         if (Input.anyKey && _gamestate == GameState.ReadyToPlay)
         {
             _gamestate = GameState.playing;
-            _UI.gameObject.SetActive(false);
+            canvasStart.gameObject.SetActive(false);
             SpawnNextButton();
         }
     }
